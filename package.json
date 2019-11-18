@@ -1,110 +1,104 @@
 {
-  "name": "onvif-rx",
-  "version": "0.0.0-development",
-  "description": "Interact with ONVIF cameras and devices using RXJS",
-  "author": "Patrick Michalina <patrickmichalina@mac.com>",
-  "main": "onvif-rx-cjs.js",
-  "module": "onvif-rx-esm.js",
-  "browser": "onvif-rx-umd.js",
-  "types": "node.d.ts",
-  "license": "MIT",
-  "keywords": [
-    "onvif",
-    "camera",
-    "video",
-    "rtsp",
-    "rtp",
-    "rxjs",
-    "node",
-    "typescript",
-    "udp",
-    "electron",
-    "universal",
-    "ptz"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/patrickmichalina/onvif-rx"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node-dev src/index.ts",
-    "lint": "tsc && tslint -p tsconfig.json",
-    "build": "npm run rollup && npm run minify",
-    "minify": "terser dist/onvif-rx-umd.js -o dist/onvif-rx-umd.min.js --source-map -c -m",
-    "rollup": "rollup -c",
-    "watch": "rollup -cw",
-    "docs": "typedoc src --theme markdown --out docs --readme none",
-    "gen.api": "rm -rf src/api && ts-node scripts/api/ast.ts && npm run docs"
-  },
-  "dependencies": {
-    "rxjs": "^6.5.3",
-    "typescript-monads": "^3.13.0",
-    "xml-js": "^1.6.11",
-    "xmldom": "^0.1.27"
-  },
-  "devDependencies": {
-    "@types/fs-extra": "^8.0.1",
-    "@types/node": "^12.11.7",
-    "@types/xml-js": "^1.0.0",
-    "@types/xmldom": "^0.1.29",
-    "fs-extra": "^8.1.0",
-    "rollup": "^1.26.0",
-    "rollup-plugin-typescript2": "^0.24.3",
-    "semantic-release": "^15.13.28",
-    "terser": "^4.3.9",
-    "ts-node-dev": "^1.0.0-pre.43",
-    "ts-simple-ast": "^21.0.4",
-    "tslib": "^1.10.0",
-    "tslint": "^5.20.0",
-    "tslint-immutable": "^6.0.1",
-    "typedoc": "^0.15.0",
-    "typedoc-plugin-markdown": "^2.2.11",
-    "typescript": "^3.6.4"
-  },
-  "release": {
-    "pkgRoot": "dist",
-    "branch": "master",
-    "plugins": [
-      "@semantic-release/npm",
-      "@semantic-release/github",
-      [
-        "@semantic-release/commit-analyzer",
-        {
-          "preset": "angular",
-          "releaseRules": [
-            {
-              "type": "docs",
-              "scope": "README",
-              "release": "patch"
-            },
-            {
-              "type": "refactor",
-              "release": "patch"
-            }
-          ],
-          "parserOpts": {
-            "noteKeywords": [
-              "BREAKING CHANGE",
-              "BREAKING CHANGES",
-              "BREAKING"
-            ]
-          }
-        }
-      ],
-      [
-        "@semantic-release/release-notes-generator",
-        {
-          "preset": "angular",
-          "parserOpts": {
-            "noteKeywords": [
-              "BREAKING CHANGE",
-              "BREAKING CHANGES",
-              "BREAKING"
-            ]
-          }
-        }
-      ]
-    ]
-  }
+	"name": "@nger/onvif-rx",
+	"version": "1.0.1",
+	"description": "Interact with ONVIF cameras and devices using RXJS",
+	"author": "Patrick Michalina <patrickmichalina@mac.com>",
+	"main": "src/index.js",
+	"types": "src/index.d.ts",
+	"license": "MIT",
+	"publishConfig": {
+		"access": "public"
+	},
+	"keywords": [
+		"onvif",
+		"camera",
+		"video",
+		"rtsp",
+		"rtp",
+		"rxjs",
+		"node",
+		"typescript",
+		"udp",
+		"electron",
+		"universal",
+		"ptz"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/patrickmichalina/onvif-rx"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "ts-node-dev src/index.ts",
+		"lint": "tsc && tslint -p tsconfig.json",
+		"build": "npm run rollup && npm run minify",
+		"minify": "terser dist/onvif-rx-umd.js -o dist/onvif-rx-umd.min.js --source-map -c -m",
+		"rollup": "rollup -c",
+		"watch": "rollup -cw",
+		"docs": "typedoc src --theme markdown --out docs --readme none",
+		"gen.api": "rm -rf src/api && ts-node scripts/api/ast.ts && npm run docs"
+	},
+	"dependencies": {
+		"rxjs": "^6.5.3",
+		"tsconfig-paths": "^3.9.0",
+		"typescript-monads": "^3.13.0",
+		"xml-js": "^1.6.11",
+		"xmldom": "^0.1.27"
+	},
+	"devDependencies": {
+		"@types/fs-extra": "^8.0.1",
+		"@types/node": "^12.11.7",
+		"@types/xml-js": "^1.0.0",
+		"@types/xmldom": "^0.1.29",
+		"fs-extra": "^8.1.0",
+		"rollup": "^1.26.0",
+		"rollup-plugin-typescript2": "^0.24.3",
+		"semantic-release": "^15.13.28",
+		"terser": "^4.3.9",
+		"ts-node-dev": "^1.0.0-pre.43",
+		"ts-simple-ast": "^21.0.4",
+		"tslib": "^1.10.0",
+		"tslint": "^5.20.0",
+		"tslint-immutable": "^6.0.1",
+		"typedoc": "^0.15.0",
+		"typedoc-plugin-markdown": "^2.2.11",
+		"typescript": "^3.6.4"
+	},
+	"release": {
+		"pkgRoot": "dist",
+		"branch": "master",
+		"plugins": [
+			"@semantic-release/npm",
+			"@semantic-release/github",
+			[
+				"@semantic-release/commit-analyzer",
+				{
+					"preset": "angular",
+					"releaseRules": [
+						{
+							"type": "docs",
+							"scope": "README",
+							"release": "patch"
+						},
+						{
+							"type": "refactor",
+							"release": "patch"
+						}
+					],
+					"parserOpts": {
+						"noteKeywords": [ "BREAKING CHANGE", "BREAKING CHANGES", "BREAKING" ]
+					}
+				}
+			],
+			[
+				"@semantic-release/release-notes-generator",
+				{
+					"preset": "angular",
+					"parserOpts": {
+						"noteKeywords": [ "BREAKING CHANGE", "BREAKING CHANGES", "BREAKING" ]
+					}
+				}
+			]
+		]
+	}
 }

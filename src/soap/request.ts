@@ -82,8 +82,8 @@ export const mapResponseXmlToJson =
           const split = node.split(':')
           const nodeKey = maybe(split[1]).valueOr(node)
           const soapNsPrefix = b.xmlDocument.documentElement.lookupPrefix(b.xmlDocument.documentElement.namespaceURI)
-
-          const parsed = JSON.parse(xml2json(b.xmlString, {
+          const xmlString = b.xmlString.replace(/(\<.*?),(.*?\>)/gmi, '$1$2')
+          const parsed = JSON.parse(xml2json(xmlString, {
             compact: true,
             spaces: 2,
             textFn: (value: any, parentElement: any) => {
@@ -94,7 +94,7 @@ export const mapResponseXmlToJson =
                 parentElement._parent[keyName] = typeConversion(value)
               } catch (e) { }
             },
-            elementNameFn: (d: string) => maybe(d.split(':')[1]).valueOr(d)
+            elementNameFn: (d: string) => maybe(d.split(':')[1].split(',').join('')).valueOr(d)
           } as any))
 
           const json = parsed['Envelope']
@@ -103,7 +103,7 @@ export const mapResponseXmlToJson =
 
           return {
             json,
-            xml: b.xmlString
+            xml: xmlString
           }
         })))
 

@@ -82,7 +82,7 @@ export const mapResponseXmlToJson =
           const split = node.split(':')
           const nodeKey = maybe(split[1]).valueOr(node)
           const soapNsPrefix = b.xmlDocument.documentElement.lookupPrefix(b.xmlDocument.documentElement.namespaceURI)
-          const xmlString = b.xmlString.replace(/(\<.*?),(.*?\>)/gmi, '$1$2')
+          const xmlString = b.xmlString;
           const parsed = JSON.parse(xml2json(xmlString, {
             compact: true,
             spaces: 2,

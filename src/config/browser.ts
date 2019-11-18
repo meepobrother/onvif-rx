@@ -1,6 +1,7 @@
 import { ISystemConfig } from './interfaces'
 import { nonce, sharedFetchWrapper, FETCH_CONFIG } from './universal'
 import { Buffer } from 'buffer'
+import { catchError } from 'rxjs/operators'
 
 const digestSha1 =
   (data: string) =>
@@ -10,7 +11,11 @@ const digestSha1 =
 const transport =
   (body: string) =>
     (uri: string) =>
-      sharedFetchWrapper(fetch(uri, FETCH_CONFIG(body)))
+      sharedFetchWrapper(fetch(uri, FETCH_CONFIG(body))).pipe(
+        catchError((e: Error, caught) => {
+          return caught.pipe()
+        })
+      )
 
 export const DEFAULT_BROWSER_ENV: ISystemConfig = {
   parser: typeof DOMParser !== 'undefined' ? new DOMParser() : {} as DOMParser,

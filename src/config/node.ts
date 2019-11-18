@@ -10,7 +10,7 @@ const getContent = (url: string, body: string) => {
   return new Promise((resolve, reject) => {
     const req = request(url, {
       method: 'POST',
-      headers: { 
+      headers: {
         'Content-Type': 'application/soap+xml; charset=utf-8;',
         'Content-Length': body.length
       }
@@ -23,7 +23,7 @@ const getContent = (url: string, body: string) => {
       const body: any[] = []
       response.on('data', a => body.push(a))
       response.on('end', () => resolve({
-        text: () => Promise.resolve(body.toString()),
+        text: () => Promise.resolve(body.join('').toString()),
         status: response.statusCode,
         statusText: response.statusMessage
       }))

@@ -1,10 +1,12 @@
 {
 	"name": "@nger/onvif-rx",
-	"version": "1.0.1",
+	"version": "1.0.4",
 	"description": "Interact with ONVIF cameras and devices using RXJS",
 	"author": "Patrick Michalina <patrickmichalina@mac.com>",
-	"main": "src/index.js",
-	"types": "src/index.d.ts",
+	"main": "src/node.js",
+	"types": "src/node.d.ts",
+	"browser": "src/browser.js",
+	"module": "src/node.js",
 	"license": "MIT",
 	"publishConfig": {
 		"access": "public"
